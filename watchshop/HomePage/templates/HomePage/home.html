@@ -1,0 +1,41 @@
+{% extends "main.html" %} {% block SideBar %}
+
+<div class="sidebar-sticky" style="margin: 1rem">
+  <h4 class="sidebar-heading">Brands</h4>
+  <div class="nav flex-column">
+    <a href="{% url 'home' %}" class="nav_link">All</a>
+  </div>
+</div>
+
+{% for brand in brands %}
+<div style="margin: 1rem">
+  <a href="{% url 'home' %}?q={{brand}}">{{brand}}</a>
+</div>
+
+{% endfor %} {% endblock%} {% block FirstBlock %}
+<div class="container">
+  <div class="row" id="product_list">
+    {% for watch in watch_list %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="uploads/{{watch.image}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{watch.name}}</h5>
+          <p class="card-text">{{watch.description}} Price: {{watch.price}}</p>
+          <a href="/product/{{watch.id}}" class="btn btn-primary">View</a>
+          <a href="{% url 'editWatch' pk=watch.id %}" class="btn btn-secondary"
+            >Edit</a
+          >
+          <a href="{% url 'deleteWatch' pk=watch.id %}" class="btn btn-danger"
+            >Delete</a
+          >{% if messages %} {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %} {% block JavaScript %} {% endblock%}

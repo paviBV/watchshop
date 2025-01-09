@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'addWatch' %}">Add Watch</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          id="search-bar"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <div class="d-flex align-items-center ms-3">
+          {% if user.is_authenticated %}
+          <span class="me-2 fw-bold text-center">Hi, {{user.username}}</span>
+          <a class="btn btn-outline-dark" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a class="btn btn-outline-dark" href="{% url 'login' %}">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

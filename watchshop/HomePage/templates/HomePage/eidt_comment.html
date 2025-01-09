@@ -1,0 +1,11 @@
+{% extends 'main.html' %} {% block FirstBlock %} {% if user.is_authenticated %}
+<h1>Edit Your Comment</h1>
+<form method="POST">
+  {% csrf_token %} {{form.as_p}}
+  <button type="submit" class="btn btn-primary">Save Changes</button>
+  <a href="{% url 'product' pk=comment.product.id %}" class="btn btn-secondary"
+    >Cancel</a
+  >
+  <button btn-outline-dark type="submit">Submit</button>
+</form>
+{% endif %} {% endblock %}

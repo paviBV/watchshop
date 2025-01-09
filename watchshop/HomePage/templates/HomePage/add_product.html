@@ -1,0 +1,8 @@
+{% extends "main.html" %} {% block FirstBlock %}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %} {{form.as_p}}
+  <button btn-outline-dark type="submit">Add Item</button>
+</form>
+
+{% endblock %}
